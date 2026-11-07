@@ -1,210 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>清水 大輔 / Daisuke Shimizu - 中学校教諭・ICT推進担当</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#2563eb',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap');
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: #f8f9fa;
-            color: #2c3e50;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-gradient::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54 40c-3.3 0-6-2.7-6-6s2.7-6 6-6v-4c-5.5 0-10 4.5-10 10s4.5 10 10 10v-4zm0-24c-3.3 0-6-2.7-6-6s2.7-6 6-6V0C48.5 0 44 4.5 44 10s4.5 10 10 10v-4zM6 20c3.3 0 6 2.7 6 6s-2.7 6-6 6v4c5.5 0 10-4.5 10-10S11.5 10 6 10v4zm0 24c3.3 0 6 2.7 6 6s-2.7 6-6 6v4c5.5 0 10-4.5 10-10s-4.5-10-10-10v4z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-        .btn-teacher {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .btn-teacher:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .card {
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #1e40af, #3b82f6);
-            border-radius: 3px;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>しみず先生の声の朝の会｜清水大輔</title>
+<meta name="description" content="三重の中学校の数学の先生が、平日の朝に5分だけ話しています。学級づくり・行事・AIと授業・総合と道徳の話を、放送とnoteで。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --board:#2E4B3C;      /* 黒板 */
+    --board-deep:#243C30;
+    --chalk:#EEF0E8;      /* チョークの白 */
+    --chalk-yellow:#F3D46A;
+    --paper:#FBFBF8;      /* プリントの白 */
+    --ink:#1E2622;        /* 墨 */
+    --line:#C9D3CB;
+    --frame:#8A6A45;      /* 黒板の木枠 */
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"BIZ UDPGothic",system-ui,sans-serif;font-size:17px;line-height:1.85}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--chalk-yellow);outline-offset:3px;border-radius:4px}
+  img{max-width:100%;display:block}
+  .wrap{max-width:46rem;margin:0 auto;padding:0 1.25rem}
+
+  /* ---------- 黒板（ここだけ思い切る） ---------- */
+  .board{background:var(--board);color:var(--chalk);
+    border-bottom:14px solid var(--frame);position:relative;overflow:hidden;
+    background-image:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.06),transparent 60%),
+                     radial-gradient(ellipse at 80% 90%,rgba(0,0,0,.18),transparent 55%)}
+  .board-inner{max-width:60rem;margin:0 auto;padding:2.2rem 1.25rem 2.6rem;
+    display:grid;grid-template-columns:1fr auto;gap:1.5rem 2.5rem;align-items:start}
+  .chalk{font-family:"Klee One",serif}
+  .board h1{font-family:"Klee One",serif;font-weight:600;font-size:clamp(2rem,6.4vw,3.6rem);
+    line-height:1.35;margin:.4rem 0 1rem;letter-spacing:.02em}
+  .board .who{font-size:1rem;opacity:.85;margin:0}
+  .board .lead{font-size:1.05rem;max-width:30rem;margin:0 0 1.6rem}
+  /* 右はしの「日付・日直」欄 */
+  .duty{writing-mode:vertical-rl;font-family:"Klee One",serif;font-size:1.25rem;
+    border-left:2px solid rgba(238,240,232,.45);padding-left:1.1rem;line-height:2;
+    display:flex;gap:1.4rem;min-height:15rem}
+  .duty b{font-weight:600;color:var(--chalk-yellow)}
+  .player{grid-column:1 / -1;background:var(--board-deep);border-radius:10px;padding:1rem;
+    border:1px dashed rgba(238,240,232,.35)}
+  .player p{margin:0 0 .6rem;font-family:"Klee One",serif;font-size:1.15rem}
+  .player iframe{width:100%;height:210px;border:0;border-radius:6px;background:#1b2e25}
+  .player .sub{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:.7rem;font-size:.95rem}
+  .player .sub a{color:var(--chalk-yellow);text-underline-offset:4px}
+  /* 黒板消し（チョークの粉を置くだけの飾り） */
+  .eraser{position:absolute;right:1.5rem;bottom:-6px;width:84px;height:22px;border-radius:3px;
+    background:linear-gradient(#5b6b8c 0 55%,#d9d4c7 55%);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+
+  /* ---------- 時間割 ---------- */
+  section{padding:3.2rem 0}
+  h2{font-size:1.55rem;margin:0 0 .4rem;line-height:1.5}
+  .intro{margin:0 0 1.8rem}
+  .timetable{border:2px solid var(--ink);border-radius:6px;overflow:hidden;background:#fff}
+  .period{display:block;border-top:1px solid var(--line)}
+  .period:first-child{border-top:0}
+  .period summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:4.6rem minmax(0,1fr)}
+  .board-inner>*{min-width:0}
+  .subj>*{min-width:0}
+  .period summary::-webkit-details-marker{display:none}
+  .num{background:var(--board);color:var(--chalk);font-family:"Klee One",serif;font-size:1.15rem;
+    display:flex;align-items:center;justify-content:center;padding:.9rem .3rem;text-align:center;line-height:1.3}
+  .subj{padding:.9rem 1.1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .subj strong{font-size:1.12rem}
+  .subj span{font-size:.9rem;color:#4b574f}
+  .subj::after{content:"＋";font-size:1.3rem;color:var(--board)}
+  details[open] .subj::after{content:"－"}
+  .body{padding:.3rem 1.1rem 1.2rem 5.7rem;border-top:1px dashed var(--line)}
+  .body ul{list-style:none;margin:0;padding:0}
+  .body li{padding:.45rem 0;display:flex;gap:.7rem;align-items:baseline}
+  .tag{flex:none;font-size:.78rem;border:1px solid currentColor;border-radius:999px;padding:0 .55rem;line-height:1.7}
+  .tag.radio{color:var(--board)}
+  .tag.note{color:#6b5a3e}
+  .body a{text-underline-offset:4px}
+
+  /* ---------- 書いている人 ---------- */
+  .me{display:grid;grid-template-columns:1fr;gap:1.4rem;align-items:start}
+  .me img{border-radius:8px;width:100%;max-width:30rem;height:auto}
+  .me h3{margin:.2rem 0 .3rem;font-size:1.3rem}
+  .me .role{margin:0 0 .8rem;color:#4b574f;font-size:.95rem}
+  .me .motto{font-family:"Klee One",serif;font-size:1.3rem;margin:.2rem 0 .8rem;line-height:1.6}
+  .book{margin-top:2.2rem;display:grid;grid-template-columns:6.5rem 1fr;gap:1.2rem;align-items:center;
+    border-top:1px solid var(--line);padding-top:1.6rem}
+  .book img{box-shadow:0 3px 10px rgba(0,0,0,.18);width:100%;height:auto}
+  .book p{margin:.1rem 0}
+
+  /* ---------- つながる ---------- */
+  .connect{background:#EEF2EE;border-top:1px solid var(--line)}
+  .ig{display:block;text-decoration:none;background:var(--ink);color:#fff;border-radius:10px;
+    padding:1.2rem 1.4rem;margin:1.2rem 0 1rem}
+  .ig strong{display:block;font-size:1.2rem}
+  .ig span{font-size:.95rem;opacity:.85}
+  .ig:hover{background:var(--board)}
+  .others{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  .others a{display:block;text-decoration:none;border:2px solid var(--ink);border-radius:10px;padding:.9rem 1.1rem;background:#fff}
+  .others a:hover{border-color:var(--board);color:var(--board)}
+  .others strong{display:block}
+  .others span{font-size:.9rem;color:#4b574f}
+  .ask{margin-top:2rem;border-left:4px solid var(--chalk-yellow);padding:.2rem 0 .2rem 1rem}
+  .ask p{margin:.2rem 0}
+  .nw{display:inline-block}
+  footer{text-align:center;font-size:.85rem;color:#5b665f;padding:2rem 0 2.6rem}
+
+  @media (max-width:640px){
+    body{font-size:16px}
+    .board-inner{grid-template-columns:1fr}
+    .duty{writing-mode:horizontal-tb;min-height:0;border-left:0;padding:0 0 .6rem;
+      border-bottom:2px solid rgba(238,240,232,.45);font-size:1.05rem;gap:1rem;flex-wrap:wrap;order:-1}
+    .period summary{grid-template-columns:3.6rem minmax(0,1fr)}
+    .subj{flex-direction:column;align-items:flex-start;gap:0;position:relative;padding-right:2.4rem}
+    .subj::after{position:absolute;right:1rem;top:50%;transform:translateY(-50%)}
+    .body{padding-left:1.1rem}
+    .others{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
-<body class="bg-gray-50">
-    <!-- Hero Section -->
-    <header class="hero-gradient text-white py-16 md:py-24 relative">
-        <div class="container mx-auto px-4 max-w-4xl text-center">
-            <div class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full bg-white overflow-hidden shadow-lg border-4 border-white">
-                <img src="profile.jpg" alt="清水 大輔のプロフィール写真" class="w-full h-full object-cover">
-            </div>
-            <h1 class="text-2xl md:text-3xl font-bold mb-2 relative z-10">清水 大輔 <span class="font-normal">/ Daisuke Shimizu</span></h1>
-            <p class="text-2xl md:text-3xl font-bold mb-2 relative z-10">『オモローな先生を増やしたいっ！』</p>
-            <p class="text-lg md:text-xl mb-4 relative z-10">～自由で余裕のある学校現場へ～</p>
+<body>
+
+<header class="board">
+  <div class="board-inner">
+    <div>
+      <p class="who chalk">声の朝の会　しみず先生</p>
+      <h1>今朝の話、<br>聴いていきませんか。</h1>
+      <p class="lead">三重の中学校で数学を教えています。平日の朝6時ごろ、担任が朝の会でするような5分の話を、スタンドFMで配信しています。</p>
+    </div>
+    <div class="duty" aria-label="今日の日付と日直">
+      <span id="today">きょう</span>
+      <span>日直　<b>しみず</b></span>
+    </div>
+    <div class="player">
+      <p>最近の回　<span class="nw">#591「GIGA構想2.0」</span></p>
+      <iframe src="https://stand.fm/embed/episodes/6ae7c49878fa512b22f7dc50" title="スタンドFM「GIGA構想2.0」の再生" loading="lazy" allow="autoplay"></iframe>
+      <div class="sub">
+        <a href="https://stand.fm/episodes/6ae7c49878fa512b22f7dc50">スタンドFMで開く</a>
+        <a href="https://stand.fm/channels/65edab793e0b28cf816da054">ほかの回も聴く（590回以上）</a>
+      </div>
+    </div>
+  </div>
+  <span class="eraser" aria-hidden="true"></span>
+</header>
+
+<main>
+  <section id="themes">
+    <div class="wrap">
+      <h2>気になった話から、どうぞ</h2>
+      <p class="intro">放送とnoteの記事を、テーマごとに時間割にしました。押すと開きます。</p>
+
+      <div class="timetable">
+        <details class="period" open>
+          <summary><span class="num">1限</span><span class="subj"><strong>学級づくり</strong><span>安心できる居場所から</span></span></summary>
+          <div class="body"><ul>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/68bdfdc9640d16f0157153d0">学級経営論①　まずは安心安全</a></li>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/68c20188a0de43e287c8cd10">学級経営論④　通信で伝える</a></li>
+            <li><span class="tag note">note</span><a href="https://note.com/tea_daisuke/n/n9f7227dae0bc">どんなに優れた手法よりも、結局「つながり」が最強の土台になる</a></li>
+          </ul></div>
+        </details>
+
+        <details class="period">
+          <summary><span class="num">2限</span><span class="subj"><strong>行事と合唱</strong><span>みんなでやってよかった、まで</span></span></summary>
+          <div class="body"><ul>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/68e6f020e64cefb30ffecf7a">ボクたちはなぜ歌う（合唱）するのか</a></li>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/6ad6a38a9c2d961923668777">我がクラスの合唱ストーリー</a></li>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/6ada93bc6500ad32b1adf890">先生は何屋さん？</a></li>
+          </ul></div>
+        </details>
+
+        <details class="period">
+          <summary><span class="num">3限</span><span class="subj"><strong>AIと授業</strong><span>先生も生徒も、正しく使う</span></span></summary>
+          <div class="body"><ul>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/682ba9fa3c7e999180c4f070">先生がAIを使うときの正解を教えます</a></li>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/6882ab5d31737cc0f5fec426">AIの講演会の内容、全部しゃべります！</a></li>
+            <li><span class="tag note">note</span><a href="https://note.com/tea_daisuke/n/n0f23f3d5cee9">AIで指導案を作る。AIの注意点と正しい使い方を教える授業</a></li>
+          </ul></div>
+        </details>
+
+        <details class="period">
+          <summary><span class="num">4限</span><span class="subj"><strong>授業づくり</strong><span>自由進度と数学の探究</span></span></summary>
+          <div class="body"><ul>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/6750cb4921828dd130e6149a">自由進度学習に挑戦中</a></li>
+            <li><span class="tag note">note</span><a href="https://note.com/tea_daisuke/n/nc2759967c360">自由進度学習で「取り残さない」ことはできるのか</a></li>
+            <li><span class="tag note">note</span><a href="https://note.com/tea_daisuke/n/n691c06a09a01">「数学って何で勉強するの？」に、テスト以外の答えを持ってほしい</a></li>
+            <li><span class="tag note">note</span><a href="https://note.com/tea_daisuke/n/n62ade3828584">どうして毎日毎日授業改善するの？のボクなりの答え。</a></li>
+          </ul></div>
+        </details>
+
+        <details class="period">
+          <summary><span class="num">5限</span><span class="subj"><strong>総合と道徳</strong><span>自分はどう生きるか</span></span></summary>
+          <div class="body"><ul>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/688f6e36d4aa320ed1ab0800">探究・総合的な学びの時間の勉強会！</a></li>
+            <li><span class="tag note">note</span><a href="https://note.com/tea_daisuke/n/n322a2a5d2706">AIと自己探究　「自分はどう生きるか」を探究する「未来へプロジェクト」</a></li>
+            <li><span class="tag note">note</span><a href="https://note.com/tea_daisuke/n/n0574ca81cdfa">道徳：3年間の授業実践報告</a></li>
+          </ul></div>
+        </details>
+
+        <details class="period">
+          <summary><span class="num">6限</span><span class="subj"><strong>先生の余裕</strong><span>職員室と働き方</span></span></summary>
+          <div class="body"><ul>
+            <li><span class="tag radio">放送</span><a href="https://stand.fm/episodes/665cdeb23db06ac8d350639c">余裕がある幸せ</a></li>
+            <li><span class="tag note">note</span><a href="https://note.com/tea_daisuke/n/n48ba7cf0bc83">研修主任としてやっていること③　校内研修を対話中心の全員参加型へ</a></li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="me" style="padding-top:1rem">
+    <div class="wrap">
+      <h2>話している人</h2>
+      <div class="me">
+        <img src="profile.jpg" alt="「誰一人取り残さない」の映し出された画面の前で話す清水大輔" width="480" height="360">
+        <div>
+          <h3>清水 大輔（しみず だいすけ）</h3>
+          <p class="role">三重県鈴鹿市の中学校教諭（数学）・ICT推進担当</p>
+          <p class="motto"><span class="nw">「オモローな先生を</span><span class="nw">増やしたいっ！」</span><br>自由で余裕のある学校現場へ。</p>
+          <p>ICTとAIの活用、総合的な学習の時間、自由進度学習に取り組んでいます。手法より先に、生徒と先生が安心してつながれる場をつくりたいと考えています。</p>
         </div>
-    </header>
-
-    <main class="container mx-auto px-4 py-12 max-w-4xl">
-        <!-- Mission -->
-        <section class="text-center mb-8">
-            <p class="text-lg text-gray-700">学びをもっとワクワクに。AI と ICT で授業をアップデート！</p>
-        </section>
-
-        <!-- Profile -->
-        <section class="bg-white rounded-xl shadow-sm p-8 mb-12 card">
-            <h2 class="text-2xl font-bold mb-6 text-center section-title">
-                <i class="fas fa-user-graduate mr-2 text-blue-600"></i>プロフィール
-            </h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-2">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-semibold text-gray-700 border-b pb-1 mb-2">名前</h3>
-                        <p class="text-gray-800">清水 大輔</p>
-                    </div>
-                    <div class="mb-6">
-                        <h3 class="text-lg font-semibold text-gray-700 border-b pb-1 mb-2">所属</h3>
-                        <p class="text-gray-800">三重県鈴鹿市中学校教諭</p>
-                    </div>
-                    <div class="mb-6">
-                        <h3 class="text-lg font-semibold text-gray-700 border-b pb-1 mb-2">専門</h3>
-                        <p class="text-gray-800">数学科</p>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-700 border-b pb-1 mb-2">興味あり</h3>
-                        <p class="text-gray-800">ICT・AI活用、総合的な学習の時間、自由進度学習</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center">
-                    <img src="lkhk.JPG" alt="清水 大輔の写真" class="w-full h-auto max-h-80 object-cover rounded-lg shadow-md">
-                </div>
-            </div>
-        </section>
-
-        <!-- Link Buttons -->
-        <div class="space-y-6 mb-16">
-            <h2 class="text-2xl font-bold mb-6 text-center section-title">
-                <i class="fas fa-link mr-2 text-blue-600"></i>リンク
-            </h2>
-            <div class="text-center">
-                <h3 class="text-lg font-semibold mb-2">YouTubeチャンネルへ</h3>
-                <p class="text-gray-600 text-sm mb-3">現在、準備中です。公開までしばらくお待ちください。</p>
-                <a href="#" class="block w-full py-4 px-6 flex items-center justify-center gap-3 rounded-xl btn-teacher text-white font-medium transition-all duration-300">
-                    <i class="fab fa-youtube text-xl"></i>
-                    <span>YouTube</span>
-                    <span class="text-xs bg-white text-blue-600 px-2 py-0.5 rounded-full">coming soon</span>
-                    <span class="sr-only">YouTubeチャンネルを開く</span>
-                </a>
-            </div>
-            
-            <div class="text-center">
-                <h3 class="text-lg font-semibold mb-2">学級通信・教員の余裕をつくための実践まとめ</h3>
-                <p class="text-gray-600 text-sm mb-3">日々の実践や想いをnoteで発信中<br>生徒たちの活動や授業での気づき、教員の働き方に関する実践などを発信しています。</p>
-                <a href="https://note.com/tea_daisuke" class="block w-full py-4 px-6 flex items-center justify-center gap-3 rounded-xl btn-teacher text-white font-medium transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-book-open text-xl"></i>
-                    <span>noteで続きを読む</span>
-                    <span class="sr-only">学級通信のnoteページを開く</span>
-                </a>
-            </div>
-            
-            <div class="text-center">
-                <h3 class="text-lg font-semibold mb-2">音声配信やインスタグラムも</h3>
-                <p class="text-gray-600 text-sm mb-3">スタンドFMでの音声配信や、インスタグラムでの情報発信なども行っています。</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <a href="https://stand.fm/channels/65edab793e0b28cf816da054" class="block w-full py-4 px-6 flex items-center justify-center gap-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-medium transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-podcast text-xl"></i>
-                        <span>stand.fm</span>
-                    </a>
-                    <a href="https://www.instagram.com/shi3zuda1suke/" class="block w-full py-4 px-6 flex items-center justify-center gap-3 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-medium transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-instagram text-xl"></i>
-                        <span>Instagram</span>
-                    </a>
-                </div>
-            </div>
+      </div>
+      <div class="book">
+        <img src="book-cover.png" alt="『オモロー授業発表会　みんなでつくる「公教育ムーブメント」』の表紙" width="185" height="272">
+        <div>
+          <p><strong>共著『オモロー授業発表会　みんなでつくる「公教育ムーブメント」』</strong></p>
+          <p>全国の「オモロー」な先生たちの実践をまとめた本です。</p>
+          <p><a href="https://www.amazon.co.jp/dp/4761930802">Amazonで見る</a></p>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Book Promo -->
-        <section id="book" class="mt-20">
-            <h2 class="text-2xl font-bold mb-8 text-center section-title">
-                <i class="fas fa-book-open mr-2 text-blue-600"></i>推薦図書
-            </h2>
-            <h3 class="text-xl font-semibold text-center mb-6">オモロー授業発表会 みんなでつくる「公教育ムーブメント」</h3>
-            <p class="text-center text-gray-600 mb-8">（一部執筆しました！）</p>
-            <div class="card overflow-hidden hover:shadow-lg">
-                <div class="md:flex">
-                    <div class="md:flex-shrink-0 p-6 flex justify-center">
-                        <div class="h-48 w-32 bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
-                            <img src="book-cover.png" alt="オモロー授業発表会 みんなでつくる『公教育ムーブメント』表紙" class="w-full h-full object-contain">
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <div class="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full mb-3">共著として参加</div>
-                        <h3 class="mt-1 text-xl font-semibold text-gray-900">オモロー授業発表会 みんなでつくる『公教育ムーブメント』</h3>
-                        <p class="mt-3 text-gray-600">
-                            全国の「オモロー」な先生たちの実践が詰まった一冊。教育現場に新しい風を吹き込むヒントが満載です。
-                        </p>
-                        <div class="mt-6">
-                            <a href="https://www.amazon.co.jp/%E3%82%AA%E3%83%A2%E3%83%AD%E3%83%BC%E6%8E%88%E6%A5%AD%E7%99%BA%E8%A1%A8%E4%BC%9A-%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E3%81%A4%E3%81%8F%E3%82%8B%E3%80%8C%E5%85%AC%E6%95%99%E8%82%B2%E3%83%A0%E3%83%BC%E3%83%96%E3%83%A1%E3%83%B3%E3%83%88%E3%80%8D-%E5%9D%8A-%E4%BD%B3%E7%B4%80/dp/4761930802" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg focus:ring-4 focus:ring-blue-300 transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                                Amazonで見る
-                                <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+  <section id="connect" class="connect">
+    <div class="wrap">
+      <h2>放課後も、つながりましょう</h2>
+      <a class="ig" href="https://www.instagram.com/shi3zuda1suke/">
+        <strong>Instagramをフォローする</strong>
+        <span>授業や学級の実践を、すぐ真似できる形でまとめています</span>
+      </a>
+      <div class="others">
+        <a href="https://stand.fm/channels/65edab793e0b28cf816da054"><strong>スタンドFM</strong><span>平日の朝、5分の放送</span></a>
+        <a href="https://note.com/tea_daisuke"><strong>note</strong><span>実践の記録と考えたこと</span></a>
+      </div>
+      <div class="ask">
+        <p><strong>講演・研修のご相談</strong></p>
+        <p>AIの使い方、学級づくり、校内研修などのご相談は、Instagramのメッセージからお送りください。</p>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <footer class="bg-white py-8 mt-12">
-        <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
-            <p>©2025 Daisuke Shimizu. All Rights Reserved.</p>
-            <p class="mt-2">
-                <a href="#" class="text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">プライバシーポリシー</a>
-            </p>
-        </div>
-    </footer>
+<footer>© 2026 Daisuke Shimizu</footer>
+<script>
+  // 黒板の日付を、見ている人のその日の日付にする（縦書きは漢数字、横書きのスマホは算用数字）
+  (function(){
+    var d=new Date(),m=d.getMonth()+1,day=d.getDate(),w="日月火水木金土"[d.getDay()];
+    var k=["","一","二","三","四","五","六","七","八","九"];
+    function kan(n){if(n<10)return k[n];var t=Math.floor(n/10),o=n%10;return (t>1?k[t]:"")+"十"+k[o];}
+    var el=document.getElementById("today");
+    function set(){
+      var vertical=getComputedStyle(el.parentNode).writingMode.indexOf("vertical")===0;
+      el.textContent=vertical?kan(m)+"月"+kan(day)+"日（"+w+"）":m+"月"+day+"日（"+w+"）";
+    }
+    set();addEventListener("resize",set);
+  })();
+</script>
 </body>
 </html>
