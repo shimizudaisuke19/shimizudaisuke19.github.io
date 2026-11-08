@@ -1,0 +1,45 @@
+# ホームページの「最近の回」を、スタンドFMの最新の放送に差し替える
+# 毎朝 8時30分（日本時間）と、Actions の画面からの手動で動く
+name: 最近の回を差し替える
+
+on:
+  schedule:
+    - cron: "30 23 * * *"   # UTC 23:30 = 日本時間 8:30
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-latest
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 最新の回を取って index.html を書き換える
+        id: update
+        run: python scripts/update_latest.py index.html
+
+      - name: 変わったときだけ commit と push
+        if: steps.update.outputs.changed == 'true'
+        env:
+          SHOWN: ${{ steps.update.outputs.shown }}
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "変更なし"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "最近の回を差し替え: ${SHOWN}"
+          git push
